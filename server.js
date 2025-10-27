@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Test için kök (/) rotası
 app.get("/", (req, res) => {
-  res.send(index.html);
+  res.send("özcan burada sana bişi ler diyor");
 });
 
 // POST isteği için test rotası
