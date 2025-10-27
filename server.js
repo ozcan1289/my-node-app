@@ -6,11 +6,11 @@ app.use(express.json());
 
 // PostgreSQL bağlantısı
 const pool = new Pool({
-  host: "<host>",        // Render DB host
+  host: "<dpg-d3vpnr9r0fns7387jhs0-a>",        // Render DB host
   port: 5432,
-  database: "<dbname>",
-  user: "<username>",
-  password: "<password>",
+  database: "<deneme_db_lea3>",
+  user: "<deneme_db_lea3_user>",
+  password: "<LaTwIVxcYb88naseSIQEsQMECIAvl9ND>",
   ssl: { rejectUnauthorized: false } // Render/PostgreSQL için SSL
 });
 
