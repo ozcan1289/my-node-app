@@ -1,6 +1,9 @@
 const express = require("express");
 const { Pool } = require("pg");  // PostgreSQL kütüphanesi
 const app = express();
+app.use(express.json());
+app.use(express.static("public"));
+
 
 app.use(express.json());
 
@@ -17,6 +20,8 @@ const pool = new Pool({
 // Test root
 app.get("/", (req, res) => {
   res.send("Render PostgreSQL sunucusu çalışıyor 🚀");
+  app.use(express.static("public"));
+
 });
 
 // POST ile veri kaydetme

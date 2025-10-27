@@ -13,7 +13,7 @@
     document.getElementById("gonder").addEventListener("click", async () => {
       const veri = { mesaj: document.getElementById("icerik").innerText };
 
-      const cevap = await fetch("https://render-deneme.onrender.com/gonder", { 
+      const cevap = await fetch("/gonder", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(veri)
@@ -21,7 +21,6 @@
 
       const sonuc = await cevap.json();
       alert("Render cevabı: " + sonuc.mesaj);
-      console.log(sonuc);
     });
   </script>
 </body>
