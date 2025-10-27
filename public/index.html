@@ -2,17 +2,20 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>CSP Uyumlu Örnek</title>
-  <!-- CSP meta tag ile sadece kendi dosyalarına izin veriyoruz -->
-<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+  <title>CSP Uyumlu Interaktif Örnek</title>
+  <!-- CSP: sadece kendi dosyalarına izin ver -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self';">
 </head>
 <body>
-  <h1>Div Interaktif Deneme (CSP Uyumlu)</h1>
+  <h1>Div ve Buton Denemesi (CSP Uyumlu)</h1>
 
   <!-- Tek div -->
   <div id="icerik">Merhaba</div>
 
-  <!-- JS dosyasını dahil et -->
-  <script src="/script.js"></script>
+  <!-- Buton -->
+  <button id="gonder">Mesajı Değiştir</button>
+
+  <!-- Harici JS dosyası -->
+  <script src="script.js"></script>
 </body>
 </html>
