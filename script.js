@@ -5,7 +5,7 @@ setTimeout(() => {
   div.innerText = "Merhaba! Şimdi JS ile değiştirildi 🎉";
 }, 3000);
 
-// Her 2 saniyede bir farklı mesaj göster
+//// Her 2 saniyede bir farklı mesaj göster
 //const mesajlar = ["Selam!", "Nasılsın?", "JS ile interaktif!", "Render çalışıyor 🚀"];
 //let index = 0;
 //
@@ -13,3 +13,4 @@ setTimeout(() => {
 //  div.innerText = mesajlar[index];
 //  index = (index + 1) % mesajlar.length;
 //}, 2000);
+//

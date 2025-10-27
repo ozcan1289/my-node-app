@@ -2,21 +2,17 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
-
-  <title>Tek Div ve Buton</title>
+  <title>CSP Uyumlu Örnek</title>
+  <!-- CSP meta tag ile sadece kendi dosyalarına izin veriyoruz -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self';">
 </head>
 <body>
-  <h1>Tek Div Denemesi</h1>
+  <h1>Div Interaktif Deneme (CSP Uyumlu)</h1>
 
   <!-- Tek div -->
-  <div id="icerik">Merhaba!</div>
-  <div id="icerik">Selam!</div>
-  
- 
+  <div id="icerik">Merhaba</div>
 
-  <script src="../script.js">
-    
-  </script>
+  <!-- JS dosyasını dahil et -->
+  <script src="/script.js"></script>
 </body>
 </html>
