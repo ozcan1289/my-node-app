@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Render HTML Test</title>
+  <meta charset="UTF-8">
+  <title>Tek Div ve Buton</title>
 </head>
 <body>
-  <h1>Bu sayfa Render üzerinden geldi 🎉</h1>
-  <div id="icerik">Merhaba PostgreSQL!</div>
-  <button id="gonder">Veriyi Gönder</button>
+  <h1>Tek Div Denemesi</h1>
 
-  <!-- ✅ script'i body'nin en altına taşı -->
+  <!-- Tek div -->
+  <div id="icerik">Merhaba!</div>
+
+  <!-- Buton -->
+  <button id="gonder">Gönder</button>
+
   <script>
-    document.getElementById("gonder").addEventListener("click", async () => {
-      const veri = { mesaj: document.getElementById("icerik").innerText };
+    const div = document.getElementById("icerik");
+    const buton = document.getElementById("gonder");
 
+    buton.addEventListener("click", async () => {
       try {
-        const cevap = await fetch("/gonder", {
+        // Sunucuya div içeriğini gönder
+        const response = await fetch("/echo", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(veri)
+          body: JSON.stringify({ mesaj: div.innerText })
         });
 
-        const text = await cevap.text();
-        console.log("Sunucudan gelen ham cevap:", text);
-        const sonuc = JSON.parse(text);
-        alert("Sunucu cevabı: " + sonuc.mesaj);
+        const data = await response.json();
+        // Geri gelen mesajı div içinde göster
+        div.innerText = data.mesaj;
       } catch (err) {
-        console.error(err);
+        div.innerText = "Hata: " + err.message;
       }
     });
   </script>
