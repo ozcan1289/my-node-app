@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sunucuya veri gönderme denemesi</title>
+</head>
+<body>
+  <div id="icerik">Merhaba Sunucu!</div>
+  <button id="gonder">Sunucuya Gönder</button>
+
+  <script>
+    document.getElementById("gonder").addEventListener("click", async () => {
+      const veri = document.getElementById("icerik").innerText;
+
+      const cevap = await fetch("http://localhost:3000/gonder", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ icerik: veri })
+      });
+
+      const sonuc = await cevap.json();
+      console.log("Sunucudan gelen:", sonuc);
+      alert("Sunucu cevabı: " + sonuc.mesaj);
+    });
+  </script>
+</body>
+</html>
