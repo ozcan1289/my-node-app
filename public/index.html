@@ -1,27 +1,27 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Render Test</title>
-</head>
-<body>
-  <h1>Render Test</h1>
-  <div id="icerik">Merhaba Render!</div>
-  <button id="gonder">Gönder</button>
+<script>
+  document.getElementById("gonder").addEventListener("click", async () => {
+    const veri = { mesaj: document.getElementById("icerik").innerText };
 
-  <script>
-    document.getElementById("gonder").addEventListener("click", async () => {
-      const veri = { mesaj: document.getElementById("icerik").innerText };
-
-      const cevap = await fetch("/gonder", { 
+    try {
+      const cevap = await fetch("/gonder", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(veri)
       });
 
-      const sonuc = await cevap.json();
-      alert("Render cevabı: " + sonuc.mesaj);
-    });
-  </script>
-</body>
-</html>
+      console.log("HTTP durumu:", cevap.status);
+      const text = await cevap.text(); // cevabı ham metin olarak alalım
+      console.log("Sunucudan gelen ham cevap:", text);
+
+      // JSON parse etmeye çalışalım
+      try {
+        const sonuc = JSON.parse(text);
+        alert("Sunucu cevabı: " + sonuc.mesaj);
+      } catch {
+        alert("Cevap JSON değil, sunucudan dönen metin: " + text);
+      }
+    } catch (err) {
+      alert("İstek hatası: " + err.message);
+    }
+  });
+</script>
