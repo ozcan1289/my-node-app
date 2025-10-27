@@ -14,7 +14,11 @@ const pool = new Pool({
   database: "<deneme_db_lea3>",
   user: "deneme_db_lea3_user",
   password: "LaTwIVxcYb88naseSIQEsQMECIAvl9ND",
-  ssl: { rejectUnauthorized: false } // Render/PostgreSQL için SSL
+  connectionString: process.env.DATABASE_URL,  // Render bağlantısı buradan
+  ssl: {
+    require: true,
+    rejectUnauthorized: false
+  }
 });
 
 // Test root
