@@ -1,0 +1,9 @@
+SET TIME OUT (3 sn sonra kod çalışır)
+
+setTimeout(() => {
+  div.innerText = "Merhaba! Şimdi JS ile değiştirildi 🎉";
+}, 3000);
+
+setTimeout(() => {
+  
+}, 3000);
