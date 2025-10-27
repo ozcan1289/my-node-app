@@ -7,14 +7,21 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self';">
 </head>
 <body>
-  <h1>Div ve Buton Denemesi (CSP Uyumlu)</h1>
+ <h1>Basit Form</h1>
 
-  <!-- Tek div -->
-  <div id="icerik">Merhaba</div>
+  <form id="form">
+    <label for="ad">Ad:</label>
+    <input type="text" id="ad" name="ad" required><br><br>
 
+    <label for="soyad">Soyad:</label>
+    <input type="text" id="soyad" name="soyad" required><br><br>
+
+    <button type="submit">Gönder</button>
+  </form>
+
+  <h2>Gönderilen Bilgi:</h2>
+  <div id="sonuc"></div>
   
-
-  <!-- Harici JS dosyası -->
   <script src="script.js"></script>
 </body>
 </html>
