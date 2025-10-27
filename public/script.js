@@ -1,22 +1,16 @@
 // Div ve buton referansları
-const div = document.getElementById("icerik");
-const form = document.getElementById("form");
+const adInput = document.getElementById("ad");
+const soyadInput = document.getElementById("soyad");
+const gonderBtn = document.getElementById("gonder");
 const sonucDiv = document.getElementById("sonuc");
 
-
-setTimeout(() => {
-  div.innerText = "Merhaba! Şimdi JS ile değiştirildi 🎉";
-}, 3000);
-
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault(); // Sayfanın yenilenmesini engelle
-
-  const ad = document.getElementById("ad").value;
-  const soyad = document.getElementById("soyad").value;
+gonderBtn.addEventListener("click", () => {
+  const ad = adInput.value;
+  const soyad = soyadInput.value;
 
   sonucDiv.innerText = `Gönderilen Bilgi: ${ad} ${soyad}`;
 
-  // İstersen formu sıfırlayabilirsin
-  form.reset();
+  // İstersen inputları temizleyebilirsin
+  adInput.value = "";
+  soyadInput.value = "";
 });

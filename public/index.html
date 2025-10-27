@@ -7,21 +7,30 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self';">
 </head>
 <body>
- <h1>Basit Form</h1>
+ <h1>Div ile Basit Form</h1>
 
-  <form id="form">
+  <!-- Ad alanı -->
+  <div>
     <label for="ad">Ad:</label>
-    <input type="text" id="ad" name="ad" required><br><br>
+    <input type="text" id="ad" placeholder="Adınızı girin">
+  </div>
+  <br>
 
+  <!-- Soyad alanı -->
+  <div>
     <label for="soyad">Soyad:</label>
-    <input type="text" id="soyad" name="soyad" required><br><br>
+    <input type="text" id="soyad" placeholder="Soyadınızı girin">
+  </div>
+  <br>
 
-    <button type="submit">Gönder</button>
-  </form>
+  <!-- Gönder butonu -->
+  <div>
+    <button id="gonder">Gönder</button>
+  </div>
 
   <h2>Gönderilen Bilgi:</h2>
   <div id="sonuc"></div>
-  
+
   <script src="script.js"></script>
 </body>
 </html>
