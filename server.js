@@ -1,25 +1,49 @@
-// server.js
 const express = require("express");
+const { Pool } = require("pg");  // PostgreSQL kütüphanesi
 const app = express();
 
-// JSON verilerini çözmek için
 app.use(express.json());
 
-// Test için kök (/) rotası
+// PostgreSQL bağlantısı
+const pool = new Pool({
+  host: "<host>",        // Render DB host
+  port: 5432,
+  database: "<dbname>",
+  user: "<username>",
+  password: "<password>",
+  ssl: { rejectUnauthorized: false } // Render/PostgreSQL için SSL
+});
+
+// Test root
 app.get("/", (req, res) => {
-  res.send("Render sunucusu ÇALIŞIYOR  mu acaba len🚀");
-  console.log("Özcan Buradayım Merak Etme");
+  res.send("Render PostgreSQL sunucusu çalışıyor 🚀");
 });
 
-// POST isteği için test rotası
-app.post("/gonder", (req, res) => {
-  console.log("Render'dan gelen veri:", req.body);
-  res.json({
-    mesaj: "Render veriyi aldı ✅",
-    gelenVeri: req.body
-  });
+// POST ile veri kaydetme
+app.post("/gonder", async (req, res) => {
+  const { mesaj } = req.body;
+  try {
+    const sonuc = await pool.query(
+      "INSERT INTO deneme_tablosu (mesaj) VALUES ($1) RETURNING *",
+      [mesaj]
+    );
+    res.json({ mesaj: "Veri kaydedildi ✅", veri: sonuc.rows[0] });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ hata: "Veri kaydedilemedi" });
+  }
 });
 
-// Render otomatik PORT verir
+// GET ile verileri çekme
+app.get("/veriler", async (req, res) => {
+  try {
+    const sonuc = await pool.query("SELECT * FROM deneme_tablosu");
+    res.json(sonuc.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ hata: "Veri çekilemedi" });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Sunucu ${PORT} portunda çalışıyor`));
