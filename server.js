@@ -36,18 +36,12 @@ app.get("/test", (req, res) => {
 // POST ile veri kaydetme
 app.post("/gonder", async (req, res) => {
   const { mesaj } = req.body;
-  console.log("Alınan veri:", mesaj);
-
   try {
-    const sonuc = await pool.query(
-      "INSERT INTO deneme_tablosu (mesaj) VALUES ($1) RETURNING *",
-      [mesaj]
-    );
-    console.log("Kaydedilen veri:", sonuc.rows[0]);
-    res.json({ mesaj: "Veri kaydedildi ✅", veri: sonuc.rows[0] });
+    const sonuc = await pool.query("SELECT NOW() as zaman");
+    res.json({ mesaj: "DB bağlantısı OK ✅", zaman: sonuc.rows[0].zaman });
   } catch (err) {
-    console.error("Hata:", err.message);
-    res.status(500).json({ hata: "Veri kaydedilemedi" });
+    console.error("Bağlantı hatası:", err);
+    res.status(500).json({ hata: "DB bağlantısı başarısız ❌" });
   }
 });
 
