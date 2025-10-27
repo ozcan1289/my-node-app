@@ -28,6 +28,7 @@ app.post("/kaydet", async (req, res) => {
       [ad, soyad]
     );
     res.json({ mesaj: "Başarıyla kaydedildi", kullanici: result.rows[0] });
+    console.log("Kullanıcı kaydedildi:", result.rows[0]);
   } catch (err) {
     console.error(err);
     res.status(500).json({ hata: "Kaydedilemedi" });
