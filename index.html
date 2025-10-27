@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Sunucuya veri gönderme denemesi</title>
+  <meta charset="UTF-8" />
+  <title>Render Test</title>
 </head>
 <body>
-  <div id="icerik">Merhaba Sunucu!</div>
-  <button id="gonder">Sunucuya Gönder</button>
+  <h1>Render Test</h1>
+  <div id="icerik">Merhaba Render!</div>
+  <button id="gonder">Gönder</button>
 
   <script>
     document.getElementById("gonder").addEventListener("click", async () => {
-      const veri = document.getElementById("icerik").innerText;
+      const veri = { mesaj: document.getElementById("icerik").innerText };
 
-      const cevap = await fetch("http://localhost:3000/gonder", {
+      const cevap = await fetch("https://render-deneme.onrender.com/gonder", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ icerik: veri })
+        body: JSON.stringify(veri)
       });
 
       const sonuc = await cevap.json();
-      console.log("Sunucudan gelen:", sonuc);
-      alert("Sunucu cevabı: " + sonuc.mesaj);
+      alert("Render cevabı: " + sonuc.mesaj);
+      console.log(sonuc);
     });
   </script>
 </body>
