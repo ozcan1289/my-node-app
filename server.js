@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Test için kök (/) rotası
 app.get("/", (req, res) => {
-  res.send("özcan burada sana bişi ler diyor");
+  res.send("Render sunucusu ÇALIŞIYOR  mu acaba🚀");
 });
 
 // POST isteği için test rotası
