@@ -1,5 +1,4 @@
 const div = document.getElementById("icerik");
-    const buton = document.getElementById("gonder");
 
     buton.addEventListener("click", async () => {
       try {
