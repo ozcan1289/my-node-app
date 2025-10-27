@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const { Pool } = require("pg"); // PostgreSQL için
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -7,11 +8,11 @@ const app = express();
 
 // PostgreSQL bağlantısı
 const pool = new Pool({
-  user: "deneme_db_lea3_user",
-  host: "dpg-d3vpnr9r0fns7387jhs0-a",
-  database: "deneme_db_lea3",
-  password: "LaTwIVxcYb88naseSIQEsQMECIAvl9ND",
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 
