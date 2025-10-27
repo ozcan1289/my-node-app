@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Test için kök (/) rotası
 app.get("/", (req, res) => {
-  res.send("Render sunucusu ÇALIŞIYOR 🚀");
+  res.send(index.html);
 });
 
 // POST isteği için test rotası
