@@ -1,27 +1,10 @@
-<script>
-  document.getElementById("gonder").addEventListener("click", async () => {
-    const veri = { mesaj: document.getElementById("icerik").innerText };
-
-    try {
-      const cevap = await fetch("/gonder", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(veri)
-      });
-
-      console.log("HTTP durumu:", cevap.status);
-      const text = await cevap.text(); // cevabı ham metin olarak alalım
-      console.log("Sunucudan gelen ham cevap:", text);
-
-      // JSON parse etmeye çalışalım
-      try {
-        const sonuc = JSON.parse(text);
-        alert("Sunucu cevabı: " + sonuc.mesaj);
-      } catch {
-        alert("Cevap JSON değil, sunucudan dönen metin: " + text);
-      }
-    } catch (err) {
-      alert("İstek hatası: " + err.message);
-    }
-  });
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Render Test</title>
+  </head>
+  <body>
+    <h1 style="color:blue;">Merhaba Render 🎉</h1>
+  </body>
+</html>
