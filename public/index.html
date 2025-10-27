@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Render Test</title>
-  </head>
-  <body>
-    <h1 style="color:blue;">Merhaba Render 🎉</h1>
-  </body>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Render HTML Test</title>
+</head>
+<body>
+  <h1>Bu sayfa Render üzerinden geldi 🎉</h1>
+  <div id="icerik">Merhaba PostgreSQL!</div>
+  <button id="gonder">Veriyi Gönder</button>
+
+  <!-- ✅ script'i body'nin en altına taşı -->
+  <script>
+    document.getElementById("gonder").addEventListener("click", async () => {
+      const veri = { mesaj: document.getElementById("icerik").innerText };
+
+      try {
+        const cevap = await fetch("/gonder", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(veri)
+        });
+
+        const text = await cevap.text();
+        console.log("Sunucudan gelen ham cevap:", text);
+        const sonuc = JSON.parse(text);
+        alert("Sunucu cevabı: " + sonuc.mesaj);
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  </script>
+</body>
 </html>
