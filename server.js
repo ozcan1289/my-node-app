@@ -6,7 +6,7 @@ app.use(express.json());
 
 // PostgreSQL bağlantısı
 const pool = new Pool({
-  host: "<oregon-postgres.render.com>",        // Render DB host
+  host: "oregon-postgres.render.com",        // Render DB host
   port: 5432,
   database: "<deneme_db_lea3>",
   user: "<deneme_db_lea3_user>",
