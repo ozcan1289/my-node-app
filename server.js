@@ -23,10 +23,15 @@ const pool = new Pool({
 
 // Test root
 app.get("/", (req, res) => {
-  res.send("Render PostgreSQL sunucusu çalışıyor 🚀");
+  //res.send("Render PostgreSQL sunucusu çalışıyor 🚀");
   app.use(express.static("public"));
 
 });
+
+app.get("/test", (req, res) => {
+  res.send("Sunucu aktif ✅");
+});
+
 
 // POST ile veri kaydetme
 app.post("/gonder", async (req, res) => {
