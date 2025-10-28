@@ -5,6 +5,7 @@ import mainRoutes from "./routes/mainRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,7 +17,6 @@ app.use(express.json());
 app.use("/", mainRoutes);
 app.use("/api", userRoutes);
 
-app.listen(PORT, () => console.log(`Server ${PORT} portunda çalışıyor 🚀`));
 
 
 
@@ -56,5 +56,6 @@ const pool = new Pool({
 
 
 
-const PORT = process.env.PORT || 3000;
-//app.listen(PORT, () => console.log(`Sunucu ${PORT} portunda çalışıyor 🚀`));
+
+
+app.listen(PORT, () => console.log(`Server ${PORT} portunda çalışıyor 🚀`));
