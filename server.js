@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import mainRoutes from "./routes/mainRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

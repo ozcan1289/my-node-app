@@ -11,7 +11,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-res.sendFile(path.join(__dirname, "../public/index.html"));
+res.sendFile(path.join(__dirname, "../public/index.html"));  // ana sayfa
+res.sendFile(path.join(__dirname, "../public/login.html"));  // login sayfası
 
 
 // Rotalar
