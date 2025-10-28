@@ -1,20 +1,19 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import mainRoutes from "./routes/mainRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
-const router = express.Router();
-
+const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const PORT = process.env.PORT || 3000;
 
-// Ana sayfa
-router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-});
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
-// Login sayfası
-router.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/login.html"));
-});
+// Rotalar
+app.use("/", mainRoutes);
+app.use("/api", authRoutes);
 
-export default router;
+app.listen(PORT, () => console.log(`Server ${PORT} portunda çalışıyor 🚀`));
