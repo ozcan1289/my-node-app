@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Paneli</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self';">
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <h1>Admin Paneli 👑</h1>
+  <button id="yenile">Yenile</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+      </tr>
+    </thead>
+    <tbody id="kullaniciTablo"></tbody>
+  </table>
+
+  <script src="admin.js"></script>
+</body>
+</html>

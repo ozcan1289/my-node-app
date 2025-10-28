@@ -34,6 +34,17 @@ app.post("/kaydet", async (req, res) => {
   }
 });
 
+app.get("/kullanicilar", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM kullanicilar ORDER BY id DESC");
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ hata: "Kullanıcılar getirilemedi" });
+  }
+});
+
+
 // / URL'si için index.html'i göster
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"));
@@ -43,6 +54,9 @@ app.get("/kayit", (req, res) => {
   res.sendFile(path.join(__dirname, "public/kayit.html"));
 });
 
+app.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/admin.html"));
+});
 
 // /hakkimizda URL'si için hakkimizda.html'i göster
 app.get("/hakkimizda", (req, res) => {
