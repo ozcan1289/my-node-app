@@ -1,7 +1,8 @@
 import express from "express";
+
 const router = express.Router();
 
-// Basit bir giriş doğrulama (örnek)
+// Basit login doğrulama
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
