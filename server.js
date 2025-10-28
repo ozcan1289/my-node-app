@@ -3,6 +3,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import mainRoutes from "./routes/mainRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import dotenv from "dotenv";
+import { Pool } from "pg";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,12 +19,7 @@ app.use(express.json());
 app.use("/", mainRoutes);
 app.use("/api", userRoutes);
 
-
-
-
-const bodyParser = require("body-parser");
-require("dotenv").config();
-const { Pool } = require("pg");
+dotenv.config();
 
 const pool = new Pool({
   user: process.env.DB_USER,
